@@ -1,10 +1,10 @@
 (function ($) {
 
- Drupal.behaviors.panopolyMagic = {
+ Drupal.behaviors.hotsauceMagic = {
    attach: function (context, settings) {
 
      /**
-      * Title Hax for Panopoly
+      * Title Hax for hotsauce
       *
       * Replaces the markup of a node title pane with
       * the h1.title page element
@@ -25,7 +25,7 @@
   /**
    * Improves the Auto Submit Experience for CTools Modals
    */
-  Drupal.behaviors.panopolyMagicAutosubmit = {
+  Drupal.behaviors.hotsauceMagicAutosubmit = {
     attach: function (context, settings) {
       // Replaces click with mousedown for submit so both normal and ajax work.
       $('.ctools-auto-submit-click', context)
@@ -44,8 +44,8 @@
       // 'this' references the form element
       function triggerSubmit (e) {
         var $this = $(this), preview_widget = $('.widget-preview', context);
-        if (!preview_widget.hasClass('panopoly-magic-loading')) {
-          preview_widget.addClass('panopoly-magic-loading');
+        if (!preview_widget.hasClass('hotsauce-magic-loading')) {
+          preview_widget.addClass('hotsauce-magic-loading');
           $this.find('.ctools-auto-submit-click').click();
         }
       }
@@ -70,11 +70,11 @@
       ];
 
       // Special handling for link field widgets. This ensures content which is ahah'd in still properly autosubmits.
-      $('.field-widget-link-field input:text', context).addClass('panopoly-textfield-autosubmit').addClass('ctools-auto-submit-exclude');
+      $('.field-widget-link-field input:text', context).addClass('hotsauce-textfield-autosubmit').addClass('ctools-auto-submit-exclude');
 
       // Handle text fields and textareas.
       var timer;
-      $('.panopoly-textfield-autosubmit, .panopoly-textarea-autosubmit', context)
+      $('.hotsauce-textfield-autosubmit, .hotsauce-textarea-autosubmit', context)
       .once('ctools-auto-submit')
       .bind('keyup blur', function (e) {
         var $element;
@@ -102,7 +102,7 @@
           else {
             $element.html($(e.target).val());
           }
-        } 
+        }
         // Automatically submit the field on blur. This won't happen if title markup is already present.
         else if (e.type == 'blur') {
           triggerSubmit.call(e.target.form)
@@ -112,9 +112,9 @@
           timer = setTimeout(function () { triggerSubmit.call(e.target.form); }, 1000);
         }
       });
-  
+
       // Handle autocomplete fields.
-      $('.panopoly-autocomplete-autosubmit', context)
+      $('.hotsauce-autocomplete-autosubmit', context)
       .once('ctools-auto-submit')
       .blur(function (e) {
         triggerSubmit.call(e.target.form);

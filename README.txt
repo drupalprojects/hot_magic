@@ -1,4 +1,4 @@
-Panopoly Magic
+hotsauce Magic
 ==============
 Weaves together the chaos magic. Very cool stuff.
 
